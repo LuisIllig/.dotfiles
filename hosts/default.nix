@@ -3,7 +3,7 @@
 {
   imports =
     [
-      ./hardware-configuration.nix
+      ./laptop/hardware-configuration.nix
     ];
 
   nix.package = pkgs.nixFlakes;
