@@ -1,4 +1,4 @@
 !/bin/sh
 pushd ~/.dotfiles
-sudo nixos-rebuild switch -I nixos-config=./configuration.nix
-popd
+sudo nixos-rebuild switch --flake .#
+popdz
