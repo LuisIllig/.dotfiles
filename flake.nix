@@ -17,10 +17,10 @@
     lib = nixpkgs.lib;
   in {
     nixosConfigurations = {
-      nixos = lib.nixosSystem {
+      laptop = lib.nixosSystem {
         inherit system;
         modules = [
-          ./configuration.nix
+          ./hosts
         ];
       };
     };
