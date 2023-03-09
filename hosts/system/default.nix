@@ -60,7 +60,6 @@
     description = "shyiyn";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-      firefox
       vscode
       git
       gnupg
