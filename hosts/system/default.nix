@@ -38,7 +38,7 @@
     gnupg
   ];
 
-  # gnupg
+  # temp gnupg
   services.pcscd.enable = true;
   programs.gnupg.agent = {
     enable = true;
