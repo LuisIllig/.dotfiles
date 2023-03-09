@@ -1,16 +1,15 @@
-{ config, pkgs, ... }:
+{ config, pkgs, user, ... }:
 
 {
-  imports =
-    [
-      ./boot.nix
-    ] ++ [
-      ./locale.nix
-    ] ++ [
-      ./sound.nix
-    ] ++ [
-      ./networking.nix
-    ];
+  imports = [
+    ./boot.nix
+  ] ++ [
+    ./locale.nix
+  ] ++ [
+    ./sound.nix
+  ] ++ [
+    ./networking.nix
+  ];
 
   # basic
   nixpkgs.config.allowUnfree = true;
@@ -53,5 +52,18 @@
     font = "${pkgs.terminus_font}/share/consolefonts/ter-132n.psf.gz";
     packages = with pkgs; [ terminus_font ];
     keyMap = "de";
+  };
+
+  # temp
+  users.users.${user} = {
+    isNormalUser = true;
+    description = "shyiyn";
+    extraGroups = [ "networkmanager" "wheel" ];
+    packages = with pkgs; [
+      firefox
+      vscode
+      git
+      gnupg
+    ];
   };
 }
