@@ -34,17 +34,8 @@
   # basic programs
   environment.systemPackages = with pkgs; [
     nano
-    git
-    gnupg
+    neofetch
   ];
-
-  # temp gnupg
-  services.pcscd.enable = true;
-  programs.gnupg.agent = {
-    enable = true;
-    pinentryFlavor = "gtk2";
-    enableSSHSupport = true;
-  };
 
   # console
   console = {
@@ -59,10 +50,5 @@
     isNormalUser = true;
     description = "shyiyn";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      neofetch
-      git
-      gnupg
-    ];
   };
 }

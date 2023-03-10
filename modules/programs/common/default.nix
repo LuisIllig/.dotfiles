@@ -7,5 +7,6 @@
     ./vscodium
     ./kitty
     ./neofetch
+    ./git
   ];
 }
