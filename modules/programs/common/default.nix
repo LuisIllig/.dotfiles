@@ -5,5 +5,7 @@
     ./gpg
     ./firefox
     ./vscodium
+    ./kitty
+    ./neofetch
   ];
 }

@@ -60,7 +60,7 @@
     description = "shyiyn";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-      vscode
+      neofetch
       git
       gnupg
     ];
