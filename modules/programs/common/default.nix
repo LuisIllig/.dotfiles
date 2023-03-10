@@ -4,5 +4,6 @@
   imports = [
     ./gpg
     ./firefox
+    ./vscodium
   ];
 }
