@@ -2,10 +2,12 @@
 
 {
   programs.gpg.package = pkgs.gnupg;
+  programs.gpg.enable = true;
   services = {
     gpg-agent = {
       enable = true;
-      pinentryFlavor = "gnome3";
+      pinentryFlavor = "gtk2";
+      enableSshSupport = true;
     };
   };
 }
