@@ -8,5 +8,9 @@
     ./kitty
     ./neofetch
     ./git
+    ./btop
+    ./idea
+    ./file_manager
+    ./network
   ];
 }

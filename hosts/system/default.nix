@@ -3,12 +3,10 @@
 {
   imports = [
     ./boot.nix
-  ] ++ [
-    ./locale.nix
-  ] ++ [
-    ./sound.nix
-  ] ++ [
     ./networking.nix
+    ./locale.nix
+    ./sound.nix
+    ./scripts.nix
   ];
 
   # basic
@@ -19,6 +17,8 @@
   nix.package = pkgs.nixFlakes;
   nix.extraOptions = ''
     experimental-features = nix-command flakes
+    warn-dirty = false
+    show-trace = true
   '';
 
   # nix
@@ -32,10 +32,17 @@
   };
 
   # basic programs
-  environment.systemPackages = with pkgs; [
-    nano
-    neofetch
-  ];
+  environment = {
+    shells = with pkgs; [ fish ];
+    systemPackages = with pkgs; [
+      nano
+      neofetch
+
+      xdg-utils # for opening default programs when clicking links
+      glib # gsettings
+    ];
+  };
+    
 
   # console
   console = {
@@ -45,10 +52,11 @@
     keyMap = "de";
   };
 
-  # temp
+  # user
   users.users.${user} = {
     isNormalUser = true;
-    description = "shyiyn";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "video" ];
   };
+
+  services.dbus.enable = true;
 }

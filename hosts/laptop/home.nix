@@ -2,7 +2,13 @@
 
 {
   imports = [
+    (import ../../modules/environments/wayland/sway/home.nix)
+  ] ++ [
     (import ../../modules/programs/common)
+  ] ++ [
+    (import ../../modules/themes/catppuccin-dark/common)
+  ] ++ [
+    (import ../../modules/shell)
   ];
 
   home = {

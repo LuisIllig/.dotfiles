@@ -25,5 +25,9 @@
   networking.useDHCP = lib.mkDefault true;
 
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-  hardware.video.hidpi.enable = lib.mkDefault true;
+
+  hardware.opengl = {
+    enable = true;
+    driSupport = true;
+  };
 }

@@ -18,7 +18,9 @@ in
     ] ++ [
       ./system
     ] ++ [
-      ./environment/plasma
+      ../modules/environments/wayland/sway
+    ] ++ [
+      ../modules/fonts
     ] ++ [
       inputs.home-manager.nixosModules.home-manager
       {
@@ -26,6 +28,7 @@ in
           useGlobalPkgs = true;
           useUserPackages = true;
           extraSpecialArgs = { inherit user; };
+          backupFileExtension = "backup";
           users.${user} = {
             imports = [
               (import ./laptop/home.nix)
