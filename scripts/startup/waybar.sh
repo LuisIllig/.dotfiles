@@ -8,3 +8,21 @@ if pgrep -x .waybar-wrapped > /dev/null; then
 fi
 
 waybar &
+
+if pgrep -x mako > /dev/null; then
+    pkill -x mako
+fi
+if pgrep -x .mako-wrapped > /dev/null; then
+    pkill -x .mako-wrapped
+fi
+
+mako &
+
+if pgrep -x autotiling > /dev/null; then
+    pkill -x autotiling
+fi
+if pgrep -x .autotiling-wra > /dev/null; then
+    pkill -x .autotiling-wra
+fi
+
+autotiling &

@@ -1,7 +1,10 @@
 { config, lib, pkgs, ... }:
 
 {
-imports = [ ../../../programs/wayland ];
+imports = [ 
+  ../../../programs/wayland
+  ./scripts.nix
+];
 programs = {
     dconf.enable = true;
     light.enable = true;

@@ -12,5 +12,6 @@
     ./idea
     ./file_manager
     ./network
+    ./music
   ];
 }

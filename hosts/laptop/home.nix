@@ -8,6 +8,8 @@
   ] ++ [
     (import ../../modules/themes/catppuccin-dark/common)
   ] ++ [
+    (import ../../modules/themes/catppuccin-dark/wayland)
+  ] ++ [
     (import ../../modules/shell)
   ];
 

@@ -70,7 +70,7 @@ set $menu rofi -show drun
     bindsym $mod+Shift+q kill
 
     # Start your launcher
-    bindsym $mod+d exec $menu
+    bindsym $mod+d exec pkill rofi || ~/.config/rofi/launcher.sh
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -227,7 +227,6 @@ input "type:touchpad" {
     middle_emulation enabled
 }
 
-output "*" bg ~/.dotfiles/imgs/png_01.jpg fill
+output "*" bg ~/.dotfiles/imgs/wall_01.jpg fill
 
-exec autotiling &
 exec_always ~/.dotfiles/scripts/startup/waybar.sh

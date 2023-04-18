@@ -1,14 +1,16 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports = [ ../../../programs/wayland/home.nix ];
+  imports = [ 
+    ../../../programs/wayland/home.nix
+    ./variables.nix
+    ];
 
   home = {
     packages = with pkgs; [
       swaybg
       swayidle
       swaylock-effects
-      pamixer # cl audio
       wev # keyboard event viewer 
       wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
       wayland
