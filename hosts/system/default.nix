@@ -37,7 +37,7 @@
     systemPackages = with pkgs; [
       nano
       neofetch
-
+      gnome.gnome-keyring
       xdg-utils # for opening default programs when clicking links
       glib # gsettings
     ];

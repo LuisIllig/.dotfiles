@@ -9,6 +9,8 @@ fi
 
 waybar &
 
+
+
 if pgrep -x mako > /dev/null; then
     pkill -x mako
 fi
@@ -18,6 +20,8 @@ fi
 
 mako &
 
+
+
 if pgrep -x autotiling > /dev/null; then
     pkill -x autotiling
 fi
@@ -26,3 +30,11 @@ if pgrep -x .autotiling-wra > /dev/null; then
 fi
 
 autotiling &
+
+
+
+if pgrep -x .nm-applet-wrapped > /dev/null; then
+    pkill -x .nm-applet-wrapped
+fi
+
+nm-applet --indicator &

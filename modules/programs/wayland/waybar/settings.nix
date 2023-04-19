@@ -3,8 +3,8 @@
     modules-left = [
       "custom/launcher"
       "sway/workspaces"
-      "temperature"
-      "custom/wall"
+      # "temperature"
+      # "custom/wall"
       "mpd"
       "custom/cava-internal"
     ];
@@ -41,7 +41,6 @@
       "disable-scroll" = true;
     };
     "backlight" = {
-      "device" = "intel_backlight";
       "on-scroll-up" = "light -A 5";
       "on-scroll-down" = "light -U 5";
       "format" = "{icon} {percent}%";
@@ -70,14 +69,13 @@
       "format-icons" = [ "" "" "" "" "" "" "" "" "" ];
       "format-full" = "{icon} {capacity}%";
       "format-charging" = " {capacity}%";
+      "format-alt" = "{time} {icon}";
       "tooltip" = false;
     };
     "clock" = {
-      "interval" = 1;
-      "format" = "{:%I:%M %p  %A %b %d}";
-      "tooltip" = true;
-      /* "tooltip-format"= "{=%A; %d %B %Y}\n<tt>{calendar}</tt>" */
-      "tooltip-format" = "上午：高数\n下午：Ps\n晚上：Golang\n<tt>{calendar}</tt>";
+      "tooltip-format" = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
+      "format-alt" = "{:%d-%m-%Y}";
+      "locale" = "en_US.UTF-8";
     };
     "memory" = {
       "interval" = 1;
@@ -110,14 +108,15 @@
       "format-ethernet" = "  {ifname} ({ipaddr})";
       "format-linked" = "說 {essid} (No IP)";
       "format-disconnected" = "說 Disconnected";
+      "on-click" = "nm-connection-editor";
       "tooltip" = false;
     };
-    "temperature" = {
-      # "hwmon-path"= "${env:HWMON_PATH}";
-      #"critical-threshold"= 80;
-      "tooltip" = false;
-      "format" = " {temperatureC}°C";
-    };
+    # "temperature" = {
+    #   # "hwmon-path"= "${env:HWMON_PATH}";
+    #   #"critical-threshold"= 80;
+    #   "tooltip" = false;
+    #   "format" = " {temperatureC}°C";
+    # };
     "custom/powermenu" = {
       "format" = "";
       "on-click" = "pkill rofi || ~/.config/rofi/powermenu.sh";
@@ -128,4 +127,4 @@
       "spacing" = 5;
     };
   }
-];
+]

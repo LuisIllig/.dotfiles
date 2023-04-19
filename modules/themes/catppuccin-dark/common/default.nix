@@ -7,5 +7,6 @@
     ./gtk
     ./rofi
     ./btop
+    ./cava
   ];
 }

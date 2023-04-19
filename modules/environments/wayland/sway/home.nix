@@ -23,6 +23,7 @@
       flameshot # screenshot
       wf-recorder # screen recorder
       dracula-theme # gtk theme
+      pamixer
     ];
   };
 

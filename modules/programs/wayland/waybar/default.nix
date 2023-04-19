@@ -7,8 +7,8 @@
       enable = false;
       target = "graphical-session.target";
     };
-    # style = import ./style.nix;
-    # settings = import ./settings.nix;
+    style = import ./style.nix;
+    settings = import ./settings.nix;
   };
   # home.file = {
   #   ".config/waybar/light_config".text = import ./light_config.nix;
