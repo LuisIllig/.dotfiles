@@ -42,7 +42,6 @@
       glib # gsettings
     ];
   };
-    
 
   # console
   console = {

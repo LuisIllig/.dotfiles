@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, user, ... }:
 
 {
   imports = [
@@ -13,5 +13,7 @@
     ./file_manager
     ./network
     ./music
+    ./media_player
+    ./screenshot
   ];
 }

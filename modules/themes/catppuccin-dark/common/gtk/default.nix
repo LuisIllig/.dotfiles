@@ -1,8 +1,15 @@
 { config, pkgs, ... }:
 
 {
+  # ref https://github.com/catppuccin/gtk
+  home = {
+    packages = with pkgs; [
+      gnome.gnome-themes-extra
+      gtk-engine-murrine
+    ];
+  };
   home.sessionVariables = {
-    GTK_THEME = "Nordic";
+    GTK_THEME = "Catppuccin-Frappe-Standard-Lavender-Dark";
   };
   home.pointerCursor = {
     package = pkgs.catppuccin-cursors;
@@ -13,8 +20,13 @@
   gtk = {
     enable = true;
     theme = {
-      name = "Nordic";
-      package = pkgs.nordic;
+      name = "Catppuccin-Frappe-Standard-Lavender-Dark";
+      package = pkgs.catppuccin-gtk.override {
+        accents = [ "lavender" ];
+        size = "standard";
+        tweaks = [ "rimless" "black" ];
+        variant = "frappe";
+      };
     };
     cursorTheme = {
       name = "Catppuccin-Frappe-Dark";

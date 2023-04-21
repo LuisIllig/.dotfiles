@@ -6,5 +6,6 @@
     ./waybar
     ./launcher
     ./tiling
+    ./image_viewer
   ];
 }

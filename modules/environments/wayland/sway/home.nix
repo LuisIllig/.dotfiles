@@ -18,11 +18,10 @@
       xwayland
       wayland-protocols
       wayland-scanner
-      grim # screenshot
-      pkgs.sway-contrib.grimshot # screenshot
-      flameshot # screenshot
+      # grim # screenshot
+      # pkgs.sway-contrib.grimshot # screenshot
+      # flameshot # screenshot
       wf-recorder # screen recorder
-      dracula-theme # gtk theme
       pamixer
     ];
   };

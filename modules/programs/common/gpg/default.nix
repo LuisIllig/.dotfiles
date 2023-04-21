@@ -9,5 +9,6 @@
       pinentryFlavor = "gtk2";
       enableSshSupport = true;
     };
+    gnome-keyring.enable = true;
   };
 }
