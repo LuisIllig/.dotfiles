@@ -2,7 +2,15 @@
 
 {
   imports = [
+    (import ../../modules/environments/wayland/hyprland/home.nix)
+  ] ++ [
     (import ../../modules/programs/common)
+  ] ++ [
+    (import ../../modules/themes/catppuccin-dark/common)
+  ] ++ [
+    (import ../../modules/themes/catppuccin-dark/wayland)
+  ] ++ [
+    (import ../../modules/shell)
   ];
 
   home = {

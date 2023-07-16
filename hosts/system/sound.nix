@@ -10,4 +10,8 @@
     alsa.support32Bit = true;
     pulse.enable = true;
   };
+  environment.systemPackages = [
+    pkgs.pulseaudioFull
+    pkgs.pavucontrol
+  ];
 }

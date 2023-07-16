@@ -12,7 +12,4 @@
     # add some custom keybinds
     # change delete line
   };
-
-
-
 }

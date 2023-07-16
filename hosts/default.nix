@@ -18,17 +18,24 @@ in
     ] ++ [
       ./system
     ] ++ [
-      ./environment/plasma
+      ../modules/environments/wayland/hyprland
+    ] ++ [
+      ../modules/fonts
     ] ++ [
       inputs.home-manager.nixosModules.home-manager
+      inputs.hyprland.nixosModules.default
+      inputs.nur.nixosModules.nur
       {
         home-manager = {
           useGlobalPkgs = true;
           useUserPackages = true;
           extraSpecialArgs = { inherit user; };
+          backupFileExtension = "backup";
           users.${user} = {
             imports = [
               (import ./laptop/home.nix)
+            ] ++ [
+              inputs.hyprland.homeManagerModules.default
             ];
           };
         };

@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, user, ... }:
 
 {
   imports = [
@@ -7,5 +7,18 @@
     ./vscodium
     ./kitty
     ./neofetch
+    ./git
+    ./btop
+    ./idea
+    ./file_manager
+    ./network
+    ./music
+    ./media_player
+    ./screenshot
+    ./communication
+    ./obsidian
+    ./utils
+    ./mail
+    ./3d-printing
   ];
 }

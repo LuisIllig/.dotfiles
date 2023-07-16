@@ -3,12 +3,11 @@
 {
   imports = [
     ./boot.nix
-  ] ++ [
-    ./locale.nix
-  ] ++ [
-    ./sound.nix
-  ] ++ [
     ./networking.nix
+    ./locale.nix
+    ./sound.nix
+    ./scripts.nix
+    ./printing.nix
   ];
 
   # basic
@@ -19,6 +18,8 @@
   nix.package = pkgs.nixFlakes;
   nix.extraOptions = ''
     experimental-features = nix-command flakes
+    warn-dirty = false
+    show-trace = true
   '';
 
   # nix
@@ -32,18 +33,17 @@
   };
 
   # basic programs
-  environment.systemPackages = with pkgs; [
-    nano
-    git
-    gnupg
-  ];
+  environment = {
+    shells = with pkgs; [ fish ];
+    systemPackages = with pkgs; [
+      nano
+      neofetch
+      gnome.gnome-keyring
+      xdg-utils # for opening default programs when clicking links
+      glib # gsettings
+      gnome.gnome-disk-utility # formatting disks / gnome-disks
 
-  # temp gnupg
-  services.pcscd.enable = true;
-  programs.gnupg.agent = {
-    enable = true;
-    pinentryFlavor = "gtk2";
-    enableSSHSupport = true;
+    ];
   };
 
   # console
@@ -54,15 +54,23 @@
     keyMap = "de";
   };
 
-  # temp
+  # user
   users.users.${user} = {
     isNormalUser = true;
-    description = "shyiyn";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      neofetch
-      git
-      gnupg
-    ];
+    extraGroups = [ "audio" "sound" "video" "networkmanager" "wheel" ];
   };
+
+  services.dbus.enable = true;
+  
+  # automount
+  services.devmon.enable = true;
+  services.gvfs.enable = true;
+  services.udisks2.enable = true;
+
+  # fileSystems."symlink-usb" = {
+  #   device = "/run/media/shyiyn";
+  #   mountPoint = "~/mnt/us";
+  #   fsType = "none";
+  #   options = [ "bind" ];
+  # };
 }
