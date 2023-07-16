@@ -7,6 +7,7 @@
     ./locale.nix
     ./sound.nix
     ./scripts.nix
+    ./printing.nix
   ];
 
   # basic
@@ -40,6 +41,8 @@
       gnome.gnome-keyring
       xdg-utils # for opening default programs when clicking links
       glib # gsettings
+      gnome.gnome-disk-utility # formatting disks / gnome-disks
+
     ];
   };
 
@@ -54,8 +57,20 @@
   # user
   users.users.${user} = {
     isNormalUser = true;
-    extraGroups = [ "networkmanager" "wheel" "video" ];
+    extraGroups = [ "audio" "sound" "video" "networkmanager" "wheel" ];
   };
 
   services.dbus.enable = true;
+  
+  # automount
+  services.devmon.enable = true;
+  services.gvfs.enable = true;
+  services.udisks2.enable = true;
+
+  # fileSystems."symlink-usb" = {
+  #   device = "/run/media/shyiyn";
+  #   mountPoint = "~/mnt/us";
+  #   fsType = "none";
+  #   options = [ "bind" ];
+  # };
 }

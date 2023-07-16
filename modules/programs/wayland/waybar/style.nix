@@ -39,7 +39,7 @@
     padding-left: 1px;
     padding-right: 1px;
   }
-  #workspaces button.focused {
+  #workspaces button.active {
     background-color: rgb(181, 232, 224);
     color: rgb(26, 24, 38);
   }
@@ -62,7 +62,7 @@
     padding-right: 6px;
     color: #7ebae4;
   }
-  #mode, #clock, #memory, #temperature,#cpu,#mpd, #custom-wall, #temperature, #backlight, #pulseaudio, #network, #battery, #custom-powermenu, #custom-cava-internal {
+  #mode, #clock, #memory, #custom-temperature,#cpu,#mpd, #custom-wall, #custom-temperature, #backlight, #pulseaudio, #network, #battery, #custom-powermenu, #custom-cava-internal {
     padding-left: 10px;
     padding-right: 10px;
   }
@@ -86,7 +86,7 @@
   #custom-wall {
     color: rgb(221, 182, 242);
   }
-  #temperature {
+  #custom-temperature {
     color: rgb(150, 205, 251);
   }
   #backlight {

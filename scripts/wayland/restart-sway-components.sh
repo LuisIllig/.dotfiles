@@ -1,5 +1,13 @@
 #!/bin/sh
 
+#############
+# audio bar #
+#############
+if pgrep -x cava > /dev/null; then
+    pkill -x cava
+fi
+cava
+
 ##########
 # waybar #
 ##########
@@ -19,10 +27,10 @@ mako &
 ##############
 # autotiling #
 ##############
-if pgrep -x .autotiling-wra > /dev/null; then
-    pkill -x .autotiling-wra
-fi
-autotiling &
+# if pgrep -x .autotiling-wra > /dev/null; then
+#     pkill -x .autotiling-wra
+# fi
+# autotiling &
 
 ###############
 # wlan applet #
@@ -31,7 +39,3 @@ if pgrep -x .nm-applet-wrapped > /dev/null; then
     pkill -x .nm-applet-wrapped
 fi
 nm-applet --indicator &
-
-if pgrep -x cava > /dev/null; then
-    pkill -x cava
-fi

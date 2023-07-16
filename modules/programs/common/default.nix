@@ -15,5 +15,10 @@
     ./music
     ./media_player
     ./screenshot
+    ./communication
+    ./obsidian
+    ./utils
+    ./mail
+    ./3d-printing
   ];
 }

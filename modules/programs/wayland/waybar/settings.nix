@@ -1,8 +1,9 @@
 [
   {
+    layer = "top";
     modules-left = [
       "custom/launcher"
-      "sway/workspaces"
+      "wlr/workspaces"
       # "temperature"
       # "custom/wall"
       "mpd"
@@ -14,6 +15,7 @@
     modules-right = [
       "pulseaudio"
       "backlight"
+      "custom/temperature"
       "memory"
       "cpu"
       "network"
@@ -34,29 +36,29 @@
     #   "tooltip" = false;
     # };
     "custom/cava-internal" = {
-      "exec" = "cava-internal";
+      "exec" = "sleep 1s && cava-internal";
       "tooltip" = false;
     };
-    "sway/workspaces" = {
+    "wlr/workspaces" = {
       "disable-scroll" = true;
+      "format" = "{icon}";
+      "on-click" = "activate";
     };
     "backlight" = {
-      "on-scroll-up" = "light -A 5";
-      "on-scroll-down" = "light -U 5";
+      "on-scroll-down" = "light -A 5";
+      "on-scroll-up" = "light -U 5";
       "format" = "{icon} {percent}%";
-      "format-icons" = [ "" "" "" "" ];
+      "format-icons" = [ "󰃝" "󰃞" "󰃟" "󰃠" ];
     };
     "pulseaudio" = {
       "scroll-step" = 1;
       "format" = "{icon} {volume}%";
-      "format-muted" = "婢 Muted";
+      "format-muted" = "󰖁 Muted";
       "format-icons" = {
         "default" = [ "" "" "" ];
       };
-      "states" = {
-        "warning" = 85;
-      };
       "on-click" = "pamixer -t";
+      "on-click-right" = "pavucontrol";
       "tooltip" = false;
     };
     "battery" = {
@@ -66,9 +68,9 @@
         "critical" = 10;
       };
       "format" = "{icon} {capacity}%";
-      "format-icons" = [ "" "" "" "" "" "" "" "" "" ];
+      "format-icons" = [ "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹" ];
       "format-full" = "{icon} {capacity}%";
-      "format-charging" = " {capacity}%";
+      "format-charging" = "󰂄 {capacity}%";
       "format-alt" = "{time} {icon}";
       "tooltip" = false;
     };
@@ -79,14 +81,14 @@
     };
     "memory" = {
       "interval" = 1;
-      "format" = "﬙ {percentage}%";
+      "format" = "󰍛 {percentage}%";
       "states" = {
         "warning" = 85;
       };
     };
     "cpu" = {
       "interval" = 1;
-      "format" = " {usage}%";
+      "format" = "󰻠 {usage}%";
     };
     "mpd" = {
       "max-length" = 25;
@@ -104,19 +106,21 @@
     };
     "network" = {
       "interval" = 1;
-      "format-wifi" = "說 {essid}";
-      "format-ethernet" = "  {ifname} ({ipaddr})";
-      "format-linked" = "說 {essid} (No IP)";
-      "format-disconnected" = "說 Disconnected";
+      "format-disconnected" = "󰯡 Disconnected";
+      "format-ethernet" = "󰀂 {ifname} ({ipaddr})";
+      "format-linked" = "󰖪 {essid} (No IP)";
+      "format-wifi" = "󰖩 {essid}";
       "on-click" = "nm-connection-editor";
       "tooltip" = false;
     };
-    # "temperature" = {
-    #   # "hwmon-path"= "${env:HWMON_PATH}";
-    #   #"critical-threshold"= 80;
-    #   "tooltip" = false;
-    #   "format" = " {temperatureC}°C";
-    # };
+    "custom/temperature" = {
+      # "hwmon-path"= "${env:HWMON_PATH}";
+      #"critical-threshold"= 80;
+      "tooltip" = false;
+      "exec" = "sensors | grep 'CPU:' | tr -d '[:space:]' | cut -d '+' -f2";
+      "format" = " {}";
+      "interval" = 10;
+    };
     "custom/powermenu" = {
       "format" = "";
       "on-click" = "pkill rofi || ~/.config/rofi/powermenu.sh";

@@ -2,6 +2,6 @@
 
 {
   programs.bash.loginShellInit = ''
-    sway
+    Hyprland
   '';
 }

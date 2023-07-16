@@ -9,7 +9,7 @@
     ];
   };
   home.sessionVariables = {
-    GTK_THEME = "Catppuccin-Frappe-Standard-Lavender-Dark";
+    GTK_THEME = "Catppuccin-Macchiato-Compact-Lavender-dark";
   };
   home.pointerCursor = {
     package = pkgs.catppuccin-cursors;
@@ -20,12 +20,12 @@
   gtk = {
     enable = true;
     theme = {
-      name = "Catppuccin-Frappe-Standard-Lavender-Dark";
+      name = "Catppuccin-Macchiato-Compact-Lavender-dark";
       package = pkgs.catppuccin-gtk.override {
         accents = [ "lavender" ];
-        size = "standard";
+        size = "compact";
         tweaks = [ "rimless" "black" ];
-        variant = "frappe";
+        variant = "macchiato";
       };
     };
     cursorTheme = {

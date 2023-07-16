@@ -2,7 +2,7 @@
 
 {
   imports = [
-    (import ../../modules/environments/wayland/sway/home.nix)
+    (import ../../modules/environments/wayland/hyprland/home.nix)
   ] ++ [
     (import ../../modules/programs/common)
   ] ++ [

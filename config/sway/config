@@ -1,15 +1,5 @@
-#--------------------------------------------------------------#
-#  ______        ___ __   __   ____ ___  _   _ _____ ___ ____  #
-# / ___\ \      / / \\ \ / /  / ___/ _ \| \ | |  ___|_ _/ ___| #
-# \___ \\ \ /\ / / _ \\ V /  | |  | | | |  \| | |_   | | |  _  #
-#  ___) |\ V  V / ___ \| |   | |__| |_| | |\  |  _|  | | |_| | #
-# |____/  \_/\_/_/   \_\_|    \____\___/|_| \_|_|   |___\____| #                                                             
-#--------------------------------------------------------------#
-
-# keys
-# wev
-# app_ids
-# swaymsg -t get_tree | grep app_id
+# keys -> wev
+# app_ids -> swaymsg -t get_tree | grep app_id
 
 #-----#
 # Mod #
@@ -57,7 +47,7 @@ for_window [app_id="termfloat"]                  resize set width 960
 #-----------------#
 # Program Opacity #
 #-----------------#
-for_window [app_id="firefox"]                    opacity 0.95
+# for_window [app_id="firefox"]                    opacity 0.95
 
 #------------#
 # Move Focus #
@@ -159,7 +149,7 @@ gaps inner  5
 gaps outer  0
 smart_borders off
 # border colour
-client.focused          #9400d3 #9400d3 #ffffff #9400d3
+client.focused          #8839ef #8839ef #ffffff #8839ef
 client.unfocused        #2e3440 #1f222d #888888
 client.focused_inactive #2e3440 #1f222d #888888 #2e3440
 client.placeholder      #2e3440 #1f222d #888888 #2e3440
