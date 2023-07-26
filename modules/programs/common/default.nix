@@ -20,5 +20,6 @@
     ./utils
     ./mail
     ./3d-printing
+    ./vpn
   ];
 }

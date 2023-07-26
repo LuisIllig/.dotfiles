@@ -3,8 +3,7 @@
 {
   home = {
     packages = with pkgs; [
-      networkmanagerapplet
-      blueman
+      protonvpn-gui
     ];
   };
 }
