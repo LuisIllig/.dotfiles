@@ -3,5 +3,6 @@
 {
   imports = [
     ./cura.nix
+    ./openscad.nix
   ];
 }

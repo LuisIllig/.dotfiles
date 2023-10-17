@@ -5,7 +5,6 @@
     sessionVariables = {
       BROWSER = "firefox";
       TERMINAL = "kitty";
-      QT_QPA_PLATFORMTHEME = "gtk3";
       QT_SCALE_FACTOR = "1";
       MOZ_ENABLE_WAYLAND = "1";
       SDL_VIDEODRIVER = "wayland";
@@ -17,6 +16,7 @@
       CLUTTER_BACKEND = "wayland";
       # WLR_RENDERER = "vulkan";
       #__NV_PRIME_RENDER_OFFLOAD="1";
+      WLR_RENDERER_ALLOW_SOFTWARE= "1 Hyprland";
 
       XDG_CURRENT_DESKTOP = "Hyprland";
       XDG_SESSION_DESKTOP = "Hyprland";

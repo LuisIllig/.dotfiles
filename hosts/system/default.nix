@@ -8,6 +8,7 @@
     ./sound.nix
     ./scripts.nix
     ./printing.nix
+    #./network-drives.nix
   ];
 
   # basic
@@ -19,10 +20,10 @@
   nix.extraOptions = ''
     experimental-features = nix-command flakes
     warn-dirty = false
-    show-trace = true
+    show-trace = false
   '';
 
-  # nix
+  # nix2
   nix = {
     settings.auto-optimise-store = true;
     gc = {
@@ -42,7 +43,7 @@
       xdg-utils # for opening default programs when clicking links
       glib # gsettings
       gnome.gnome-disk-utility # formatting disks / gnome-disks
-
+      file # file -bi filename
     ];
   };
 
@@ -57,7 +58,7 @@
   # user
   users.users.${user} = {
     isNormalUser = true;
-    extraGroups = [ "audio" "sound" "video" "networkmanager" "wheel" ];
+    extraGroups = [ "audio" "sound" "video" "networkmanager" "wheel" "uinput" "libvirtd" ];
   };
 
   services.dbus.enable = true;
@@ -66,11 +67,4 @@
   services.devmon.enable = true;
   services.gvfs.enable = true;
   services.udisks2.enable = true;
-
-  # fileSystems."symlink-usb" = {
-  #   device = "/run/media/shyiyn";
-  #   mountPoint = "~/mnt/us";
-  #   fsType = "none";
-  #   options = [ "bind" ];
-  # };
 }

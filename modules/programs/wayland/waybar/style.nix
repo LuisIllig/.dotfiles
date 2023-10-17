@@ -38,6 +38,7 @@
     padding-bottom: 5px;
     padding-left: 1px;
     padding-right: 1px;
+    color: rgb(245, 224, 220);
   }
   #workspaces button.active {
     background-color: rgb(181, 232, 224);
@@ -95,6 +96,9 @@
   #pulseaudio {
     color: rgb(245, 224, 220);
   }
+  #custom-microphone {
+    color: rgb(245, 224, 220);
+  }
   #network {
     color: #ABE9B3;
   }
@@ -126,5 +130,6 @@
   }
   #custom-cava-internal{
     font-family: "Hack Nerd Font" ;
+    color: rgb(245, 224, 220);
   }
 ''

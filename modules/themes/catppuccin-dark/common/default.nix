@@ -4,7 +4,7 @@
   imports = [
     ./kitty
     ./fish
-    ./gtk
+    ./gtk/nordic.nix
     ./rofi
     ./btop
     ./cava

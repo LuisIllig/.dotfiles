@@ -3,8 +3,9 @@
 {
   home = {
     packages = with pkgs; [
-      cinnamon.nemo
+      cinnamon.nemo-with-extensions
       p7zip
+      cinnamon.nemo-fileroller
     ];
   };
 }

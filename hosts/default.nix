@@ -25,17 +25,25 @@ in
       inputs.home-manager.nixosModules.home-manager
       inputs.hyprland.nixosModules.default
       inputs.nur.nixosModules.nur
+      inputs.nur.hmModules.nur
+      {
+        nixpkgs.overlays = [
+          inputs.nur.overlay
+        ]; 
+      }
       {
         home-manager = {
           useGlobalPkgs = true;
           useUserPackages = true;
-          extraSpecialArgs = { inherit user; };
+          extraSpecialArgs = { inherit inputs user; };
           backupFileExtension = "backup";
           users.${user} = {
             imports = [
               (import ./laptop/home.nix)
             ] ++ [
               inputs.hyprland.homeManagerModules.default
+              inputs.nur.hmModules.nur
+              inputs.nixvim.homeManagerModules.nixvim
             ];
           };
         };

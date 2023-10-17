@@ -6,6 +6,7 @@ let
   custom-swaylock-suspend = pkgs.writeShellScriptBin "custom-swaylock-suspend" (builtins.readFile ../../../../scripts/wayland/custom-swaylock-suspend.sh);
   restart-sway-components = pkgs.writeShellScriptBin "restart-sway-components" (builtins.readFile ../../../../scripts/wayland/restart-sway-components.sh);
   swww-init = pkgs.writeShellScriptBin "swww-init" (builtins.readFile ../../../../scripts/wayland/swww-init.sh);
+  custom-microphone = pkgs.writeShellScriptBin "custom-microphone" (builtins.readFile ../../../../scripts/wayland/custom-microphone.sh);
 in
 {
   environment.systemPackages = [
@@ -14,5 +15,6 @@ in
     custom-swaylock-suspend
     restart-sway-components
     swww-init
+    custom-microphone
   ];
 }

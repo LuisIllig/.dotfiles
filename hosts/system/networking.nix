@@ -7,24 +7,23 @@
   networking.networkmanager.wifi.backend = "iwd";
   programs.nm-applet.enable = false;
 
-  # wireguard
-  environment.systemPackages = [ pkgs.wireguard-tools ];
-  networking.firewall = {
-    enable = true;
-    allowedUDPPorts = [ 23 51820 ]; # Clients and peers can use the same port, see listenport
-  };
+  # networking.firewall = {
+  #   enable = true;
+  #   allowedTCPPorts = [ 80 8080 403 1701 9001 ];
+  #   # allowedUDPPortRanges = [
+  #   #   { from = 1700; to = 1702; }
+  #   #   { from = 9000; to = 9002; }
+  #   # ];
+  # };
+  # networking.firewall.allowPing = true;
+  networking.firewall.enable = false;
+  programs.weylus.openFirewall = true;
+  programs.weylus.enable = true;
+  # networking.firewall.enable = false;
 
-  networking.firewall = {
-   # if packets are still dropped, they will show up in dmesg
-  logReversePathDrops = true;
-   # wireguard trips rpfilter up
-  extraCommands = ''
-    ip46tables -t mangle -I nixos-fw-rpfilter -p udp -m udp --sport 51820 -j RETURN
-    ip46tables -t mangle -I nixos-fw-rpfilter -p udp -m udp --dport 51820 -j RETURN
-  '';
-  extraStopCommands = ''
-    ip46tables -t mangle -D nixos-fw-rpfilter -p udp -m udp --sport 51820 -j RETURN || true
-    ip46tables -t mangle -D nixos-fw-rpfilter -p udp -m udp --dport 51820 -j RETURN || true
-  '';
+   environment = {
+    systemPackages = with pkgs; [
+      weylus
+    ];
   };
 }

@@ -3,8 +3,9 @@
 {
   home = {
     packages = with pkgs; [
-      protonvpn-gui
       protonvpn-cli
+      openconnect
+      networkmanager-openconnect
     ];
   };
 }

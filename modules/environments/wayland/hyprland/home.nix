@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 
 {
   imports = [ 
@@ -8,6 +8,8 @@
 
   home = {
     packages = with pkgs; [
+      hyprpicker
+      inputs.hypr-contrib.packages.${pkgs.system}.grimblast # screenshots
       swayidle
       swaylock-effects
       wev # keyboard event viewer 

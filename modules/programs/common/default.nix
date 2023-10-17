@@ -1,4 +1,4 @@
-{ config, pkgs, user, ... }:
+{ config, pkgs, user, inputs, ... }:
 
 {
   imports = [
@@ -21,5 +21,10 @@
     ./mail
     ./3d-printing
     ./vpn
+    ./neovim
+    ./security
+    ./python
+    ./latex
+    ./test
   ];
 }

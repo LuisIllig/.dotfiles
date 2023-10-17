@@ -5,8 +5,14 @@
 
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "usbhid" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-amd" ];
+  boot.kernelModules = [ "kvm-amd" "amd-pstate" ];
   boot.extraModulePackages = [ ];
+  boot.kernelParams = [
+    "initcall_blacklist=acpi_cpufreq_init"
+    "amd_pstate.shared_mem=1"
+    "amd_pstate=passive"
+  ];
+
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/2c35a61b-22ca-458a-8970-3ab316a7fd1e";
@@ -33,6 +39,22 @@
     #   vaapiVdpau
     #   libvdpau-va-gl
     # ];
+  };
+
+  services.tlp = {
+    enable = true;
+    settings = {
+      CPU_SCALING_GOVERNOR_ON_AC = "schedutil";
+      CPU_SCALING_GOVERNOR_ON_BAT = "schedutil";
+
+      CPU_ENERGY_PERF_POLICY_ON_AC = "schedutil";
+      CPU_ENERGY_PERF_POLICY_ON_BAT = "schedutil";
+
+      CPU_MIN_PERF_ON_AC = 0;
+      CPU_MAX_PERF_ON_AC = 100;
+      CPU_MIN_PERF_ON_BAT = 0;
+      CPU_MAX_PERF_ON_BAT = 20;
+    };
   };
 
 }

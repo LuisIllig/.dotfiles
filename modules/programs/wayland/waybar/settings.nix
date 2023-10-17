@@ -3,7 +3,7 @@
     layer = "top";
     modules-left = [
       "custom/launcher"
-      "wlr/workspaces"
+      "hyprland/workspaces"
       # "temperature"
       # "custom/wall"
       "mpd"
@@ -14,6 +14,7 @@
     ];
     modules-right = [
       "pulseaudio"
+      "custom/microphone"
       "backlight"
       "custom/temperature"
       "memory"
@@ -59,6 +60,13 @@
       };
       "on-click" = "pamixer -t";
       "on-click-right" = "pavucontrol";
+      "tooltip" = false;
+    };
+    "custom/microphone" = {
+      "exec" = "custom-microphone";
+      "format" = "{}";
+      "interval" = 1;
+      "on-click" = "pamixer --source 67 -t";
       "tooltip" = false;
     };
     "battery" = {
