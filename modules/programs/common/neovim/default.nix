@@ -1,26 +1,98 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
-  # programs.neovim.enable = true;
-  # programs.neovim.plugins = with pkgs; [
-  #   vimPlugins.lightline-vim
-  #   vimPlugins.nvchad
-  #   vimPlugins.nvchad-ui
-  # ];
-  # programs.neovim.viAlias = true;
-  # programs.neovim.vimAlias = true;
-  programs.nixvim = {
-    enable = true;
+  # ref: https://github.com/vimjoyer/nvim-nix-video/tree/main
 
-    # colorschemes.gruvbox.enable = true;
-    plugins.lightline.enable = true;
-    extraPlugins = with pkgs.vimPlugins; [
-      nvchad
-      #nvchad-ui
+  home.sessionVariables = {
+    EDITOR = "nvim";
+  };
+
+  programs.neovim = 
+  let
+    toLua = str: "lua << EOF\n${str}\nEOF\n";
+    toLuaFile = file: "lua << EOF\n${builtins.readFile file}\nEOF\n";
+  in
+  {
+    enable = true;
+    viAlias = true;
+
+    extraPackages = with pkgs; [
+      lua-language-server
+      rnix-lsp
+
+      xclip
+      wl-clipboard
     ];
-    extraConfigLua = ''
-      -- Print a little welcome message when nvim is opened!
-      print("Hello world!")
+
+    extraLuaConfig = ''
+      ${builtins.readFile ./options.lua}
     '';
+
+    plugins = with pkgs.vimPlugins; [
+      {
+        plugin = nvim-tree-lua;
+        config = toLuaFile ./plugin/nvim-tree.lua;
+      }
+
+      {
+        plugin = nvim-lspconfig;
+        config = toLuaFile ./plugin/lsp.lua;
+      }
+
+      {
+        plugin = comment-nvim;
+        config = toLua "require(\"Comment\").setup()";
+      }
+
+      {
+        plugin = gruvbox-nvim;
+        config = "colorscheme gruvbox";
+      }
+
+      neodev-nvim
+
+      cheatsheet-nvim
+
+      nvim-cmp 
+      {
+        plugin = nvim-cmp;
+        config = toLuaFile ./plugin/cmp.lua;
+      }
+
+      {
+        plugin = telescope-nvim;
+        config = toLuaFile ./plugin/telescope.lua;
+      }
+
+      telescope-fzf-native-nvim
+
+      cmp_luasnip
+      cmp-nvim-lsp
+
+      luasnip
+      friendly-snippets
+
+
+      lualine-nvim
+      nvim-web-devicons
+
+      {
+        plugin = (nvim-treesitter.withPlugins (p: [
+          p.tree-sitter-nix
+          p.tree-sitter-vim
+          p.tree-sitter-bash
+          p.tree-sitter-lua
+          p.tree-sitter-python
+          p.tree-sitter-json
+        ]));
+        config = toLuaFile ./plugin/treesitter.lua;
+      }
+
+      vim-nix
+    ];
+    
+    # extraLuaConfig = ''
+    #   ${builtins.readFile ./nvim/plugin/other.lua}
+    # ''
   };
 }

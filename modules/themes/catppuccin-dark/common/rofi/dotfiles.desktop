@@ -1,0 +1,8 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Type=Application
+NoDisplay=True
+Exec=dotfiles
+Name=dotfiles
+#Icon=/home/.dotfiles/icon/nix-snowflake.svg

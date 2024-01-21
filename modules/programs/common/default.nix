@@ -16,7 +16,7 @@
     ./media_player
     ./screenshot
     ./communication
-    ./obsidian
+    # ./obsidian
     ./utils
     ./mail
     ./3d-printing

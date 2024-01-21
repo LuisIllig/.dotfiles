@@ -12,13 +12,13 @@
 
   "beacon.enabled" = false;
   "breakpad.reportURL" = "";
-  "general.useragent.override" = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/117.0";
+  "general.useragent.override" = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/120.0";
   "keyword.enabled" = true;
   "security.ssl.disable_session_identifiers" = true;
   "services.sync.prefs.sync.browser.newtabpage.activity-stream.showSponsoredTopSite" = false;
   "signon.autofillForms" = false;
 
-  "webgl.disabled" = true;
+  "webgl.disabled" = false;
   "webgl.renderer-string-override" = " ";
   "webgl.vendor-string-override" = " ";
 
@@ -140,4 +140,6 @@
   "network.predictor.enabled" = false;
   "network.prefetch-next" = false;
   "network.trr.mode" = 5;
+
+  "signon.rememberSignons" = false;
 }

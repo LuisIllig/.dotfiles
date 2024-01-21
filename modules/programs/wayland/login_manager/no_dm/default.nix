@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  programs.bash.loginShellInit = ''
+  programs.fish.loginShellInit = ''
     Hyprland
   '';
 }

@@ -6,7 +6,7 @@
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "usbhid" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" "amd-pstate" ];
-  boot.extraModulePackages = [ ];
+  boot.extraModulePackages = [];
   boot.kernelParams = [
     "initcall_blacklist=acpi_cpufreq_init"
     "amd_pstate.shared_mem=1"
@@ -34,21 +34,22 @@
 
   hardware.opengl = {
     enable = true;
-    driSupport = true;
-    # extraPackages = with pkgs; [
-    #   vaapiVdpau
-    #   libvdpau-va-gl
-    # ];
+    # driSupport = true;
+    extraPackages = with pkgs; [
+      vaapiVdpau
+      libvdpau-va-gl
+      
+    ];
   };
 
   services.tlp = {
     enable = true;
     settings = {
-      CPU_SCALING_GOVERNOR_ON_AC = "schedutil";
-      CPU_SCALING_GOVERNOR_ON_BAT = "schedutil";
+      CPU_SCALING_GOVERNOR_ON_AC = "performance";
+      CPU_SCALING_GOVERNOR_ON_BAT = "ondemand";
 
-      CPU_ENERGY_PERF_POLICY_ON_AC = "schedutil";
-      CPU_ENERGY_PERF_POLICY_ON_BAT = "schedutil";
+      CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
+      CPU_ENERGY_PERF_POLICY_ON_BAT = "ondemand";
 
       CPU_MIN_PERF_ON_AC = 0;
       CPU_MAX_PERF_ON_AC = 100;

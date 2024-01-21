@@ -38,8 +38,3 @@
     transition: 0.2s margin-top ease-out;
   }
 ''
-  #TabsToolbar,#nav-bar{ height: 32px !important; }
-#TabsToolbar{margin-left:28vw !important;margin-right:44px; }
-#TabsToolbar,#tabbrowser-tabs{background-color:rgb(50, 50, 52) !important}
-#nav-bar{margin-top:-32px !important;margin-right: 70vw!important;}
-#PanelUI-button{position: fixed;top:2px;right:144px;}

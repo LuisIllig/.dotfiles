@@ -1,8 +1,7 @@
 { config, pkgs, inputs, ... }:
 
 {
-
-  programs.firefox = {
+   programs.firefox = {
     enable = true;
     package = pkgs.firefox-wayland;
     profiles.default = {
@@ -70,6 +69,7 @@
         redirector
         vimium
         privacy-badger
+        no-pdf-download
       ];
     };
   };

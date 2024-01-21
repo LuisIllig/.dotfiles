@@ -1,5 +1,5 @@
 {
-  description = "A very basic flake";
+  description = "My NixOS flakes";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -23,14 +23,19 @@
     system = "x86_64-linux";
     pkgs = import nixpkgs {
       inherit system;
-      config = { allowUnfree = true; };
+      config = { 
+        allowUnfree = true; 
+        # permittedInsecurePackages = ["electron-25.9.0"];
+      };
+      overlays = [
+        inputs.nur.overlay
+      ];
     };
-    lib = nixpkgs.lib;
   in 
   {
     nixosConfigurations = (
       import ./hosts {
-        inherit self nixpkgs system inputs user;
+        inherit self pkgs nixpkgs system inputs user;
       }
     );
   };

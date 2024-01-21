@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./cura.nix
+    # ./cura.nix
     ./openscad.nix
   ];
 }

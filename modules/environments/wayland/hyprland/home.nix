@@ -25,6 +25,10 @@
       wf-recorder # screen recorder
       pamixer
       swww
+      wlroots
+      wlr-randr
+      wlr-protocols
+      wayout
     ];
   };
 

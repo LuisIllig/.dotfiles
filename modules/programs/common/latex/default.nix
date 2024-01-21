@@ -3,7 +3,8 @@
 {
   home = {
     packages = with pkgs; [
-      pkgs.texlive.combined.scheme-full
+      texliveFull
+      tikzit
     ];
   };
 }

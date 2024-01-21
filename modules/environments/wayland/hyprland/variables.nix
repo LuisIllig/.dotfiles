@@ -17,6 +17,8 @@
       # WLR_RENDERER = "vulkan";
       #__NV_PRIME_RENDER_OFFLOAD="1";
       WLR_RENDERER_ALLOW_SOFTWARE= "1 Hyprland";
+      # MOZ_LOG="PlatformDecoderModule:5";
+      WLR_NO_HARDWARE_CURSORS = "1";
 
       XDG_CURRENT_DESKTOP = "Hyprland";
       XDG_SESSION_DESKTOP = "Hyprland";

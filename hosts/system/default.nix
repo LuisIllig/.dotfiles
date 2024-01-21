@@ -1,4 +1,4 @@
-{ config, pkgs, user, ... }:
+{ config, lib, pkgs, user, ... }:
 
 {
   imports = [
@@ -10,6 +10,16 @@
     ./printing.nix
     #./network-drives.nix
   ];
+
+  # services.pufferpanel = {
+  #   enable = true;
+  #   extraPackages = with pkgs; [ bash curl gawk gnutar gzip ];
+  #   package = pkgs.buildFHSEnv {
+  #     name = "pufferpanel-fhs";
+  #     runScript = lib.getExe pkgs.pufferpanel;
+  #     targetPkgs = pkgs': with pkgs'; [ icu openssl zlib ];
+  #   };
+  # };
 
   # basic
   nixpkgs.config.allowUnfree = true;
@@ -39,13 +49,18 @@
     systemPackages = with pkgs; [
       nano
       neofetch
-      gnome.gnome-keyring
+      # gnome.gnome-keyring
       xdg-utils # for opening default programs when clicking links
       glib # gsettings
       gnome.gnome-disk-utility # formatting disks / gnome-disks
       file # file -bi filename
+      # pufferpanel
+      polkit
+      polkit_gnome
     ];
   };
+
+  services.gnome.gnome-keyring.enable = true;
 
   # console
   console = {
@@ -57,9 +72,13 @@
 
   # user
   users.users.${user} = {
+    useDefaultShell = true;
     isNormalUser = true;
     extraGroups = [ "audio" "sound" "video" "networkmanager" "wheel" "uinput" "libvirtd" ];
   };
+
+  programs.fish.enable = true;
+  users.defaultUserShell = pkgs.fish;
 
   services.dbus.enable = true;
   
@@ -67,4 +86,35 @@
   services.devmon.enable = true;
   services.gvfs.enable = true;
   services.udisks2.enable = true;
+
+  # xdg.portal.config
+
+  # services.postgresql = {
+  #   enable = true;
+  #   ensureDatabases = [ "wikijs" ];
+  #   authentication = pkgs.lib.mkOverride 10 ''
+  #     #type database  DBuser  auth-method
+  #     local all       all     trust
+  #   '';
+  #   ensureUsers = [
+  #     {
+  #       name = "wikijs";
+  #       ensureDBOwnership = true;
+  #     }
+  #   ];
+  # };
+
+  # services.wiki-js = {
+  #   enable = true;
+  #   settings = {
+  #     bindIp = "127.0.0.1";
+  #     port = 3000;
+
+  #     db = {
+  #       db   = "wikijs";
+  #       user = "wikijs";
+  #       host = "/run/postgresql";
+  #     };
+  #   };
+  # };
 }

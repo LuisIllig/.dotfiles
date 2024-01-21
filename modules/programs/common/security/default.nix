@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./nitrokey.nix
+    # ./nitrokey.nix
     ./keepassxc.nix
   ];
 }

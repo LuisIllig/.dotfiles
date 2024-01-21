@@ -3,27 +3,20 @@
 {
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
-  networking.wireless.iwd.enable = true;
-  networking.networkmanager.wifi.backend = "iwd";
+  # networking.wireless.iwd.enable = true;
+  # networking.networkmanager.wifi.backend = "iwd";
   programs.nm-applet.enable = false;
 
-  # networking.firewall = {
-  #   enable = true;
-  #   allowedTCPPorts = [ 80 8080 403 1701 9001 ];
-  #   # allowedUDPPortRanges = [
-  #   #   { from = 1700; to = 1702; }
-  #   #   { from = 9000; to = 9002; }
-  #   # ];
-  # };
-  # networking.firewall.allowPing = true;
-  networking.firewall.enable = false;
-  programs.weylus.openFirewall = true;
-  programs.weylus.enable = true;
-  # networking.firewall.enable = false;
-
-   environment = {
-    systemPackages = with pkgs; [
-      weylus
-    ];
-  };
+  # networking.wireless.networks."37C3".auth = ''
+  #   key_mgmt=WPA-EAP
+  #   eap=TTLS
+  #   identity="37C3"
+  #   password="37C3"
+  #   ca_cert="${builtins.fetchurl {
+  #     url = "https://letsencrypt.org/certs/isrgrootx1.pem";
+  #     sha256 = "sha256:1la36n2f31j9s03v847ig6ny9lr875q3g7smnq33dcsmf2i5gd92";
+  #   }}"
+  #   altsubject_match="DNS:radius.c3noc.net"
+  #   phase2="auth=PAP"
+  # '';
 }

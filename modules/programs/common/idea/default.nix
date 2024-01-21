@@ -4,10 +4,11 @@
   home = {
     packages = with pkgs; [
       jetbrains.idea-ultimate
-      bluej
+      # bluej
       godot_4
+      # https://github.com/NixOS/nixpkgs/issues/265309
       freecad
-      python3
+      jetbrains.pycharm-professional
     ];
   };
 }

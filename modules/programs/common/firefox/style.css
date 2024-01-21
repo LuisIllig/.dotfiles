@@ -1,0 +1,22 @@
+:root {
+  --text: #d8dee9;
+  --background: #2e3440;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--text);
+}
+
+table {
+  border: 1px solid var(--text);
+  width: 100%;
+}
+
+div.schedule-container {
+  width: 60%;
+}
+
+table.thead.th {
+  text-align: center;
+}

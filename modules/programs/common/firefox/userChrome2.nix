@@ -5,7 +5,7 @@
 
   * {
     font-family: JetBrainsMono Nerd Font Mono !important;
-    font-size: 12pt !important;
+    # font-size: 12pt !important;
   }
 
   #urlbar:not(.searchButton) > #urlbar-input-container > #identity-box[pageproxystate="invalid"] {
